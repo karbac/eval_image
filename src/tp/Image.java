@@ -26,19 +26,25 @@ public class Image {
                                     {60, 87, 100, 0, 100, 100}
             
         };
+        System.out.print("Inversion des couleurs : ");
+        afficher(inverser(M));
+        
+        System.out.print("Accentuation du contraste : ");
+        afficher(accentuer_contraste(M));
+        
+        System.out.print("Diminution du contraste : ");
         afficher(diminuer_contraste(M));
     }
     
-     public static int[][] diminuer_contraste(int[][] matrice) {        
-        double moy = moyenne(matrice); // calcul de la saturation moyenne
-        
-        // la saturation de chaque case est tirée vers la saturation moyenne
+     
+    
+    public static int[][] inverser(int[][] matrice){
         for(int i = 0 ; i < NL ; i++){
             for(int j = 0 ; j < NC ; j++){
-                matrice[i][j] = (int) Math.round( (matrice[i][j] + moy ) / 2);
+                matrice[i][j] = 100 - matrice[i][j]; // Permet d'inverser la saturation de chaque case
             }
         }
-        return matrice;        
+        return matrice;
     }
     
      // Permet d'afficher une matrice dans la console
@@ -81,24 +87,17 @@ public class Image {
     }
     
     
-    
-    
-    
-    
-    public static int[][] mystere(int[][] matrice){
+    public static int[][] diminuer_contraste(int[][] matrice) {        
+        double moy = moyenne(matrice); // calcul de la saturation moyenne
+        
+        // la saturation de chaque case est tirée vers la saturation moyenne
         for(int i = 0 ; i < NL ; i++){
             for(int j = 0 ; j < NC ; j++){
-                matrice[i][j] = 100 - matrice[i][j]; // Permet d'inverser la saturation de chaque case
+                matrice[i][j] = (int) Math.round( (matrice[i][j] + moy ) / 2);
             }
         }
-        return matrice;
+        return matrice;        
     }
-    
-    
-    
- 
-    
-   
-    
+        
     
 }
